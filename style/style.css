@@ -200,6 +200,7 @@ body {
 .event-card__img {
     display: block;
     position: absolute;
+    right: 0;
     top: 0;
     left: 0;
     width: 100%;
