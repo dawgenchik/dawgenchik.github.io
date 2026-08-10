@@ -68,7 +68,7 @@ body {
 }
 
 .page-header__nav-link:hover {
-    color: rgb(183, 51, 36);
+    color: rgba(183, 51, 36, 0.874);
 }
 
 .main {
