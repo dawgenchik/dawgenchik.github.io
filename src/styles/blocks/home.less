@@ -1,7 +1,85 @@
 .home {
-padding: 100px 0;
+    padding: 100px 0;
 
-&__listing {
-    margin-bottom: 95px;
+    &__title {
+        max-width: 518px;
+        line-height: 58px;
+        font-size: 45px;
+        font-family: @font2;
+        margin: 0 auto;
+        padding: 0;
+        color: @black;
+        text-align: center;
+        margin-bottom: 75.5px;
+    }
+
+    &__subtitle {
+        max-width: 990px;
+        line-height: 58px;
+        font-size: 45px;
+        font-family: @font2;
+        margin: 0 auto;
+        color: @black;
+        text-align: center;
+        margin-top: 70px;
+    }
+
+    &__listing {
+        margin-bottom: 95px;
+    }
 }
+
+.offers {
+    &__title {
+        max-width: 90px;
+        line-height: 30px;
+        font-size: 22px;
+        font-family: @font2;
+        margin: 0 auto;
+        color: @black;
+        text-align: center;
+        margin-top: 100px;
+        margin-bottom: 46px;
+    }
+
+    &__buttons {
+        display: flex;
+        justify-content: center;
+        gap: 107px;
+        margin-top: 30px;
+    }
+
+    &__button {
+        width: 272px;
+        height: 52px;
+        padding: 0 20px;
+        border: 1px solid @black;
+        background-color: transparent;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 52px;
+        color: @black;
+        text-align: center;
+        cursor: pointer;
+        transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+
+        &--red {
+            background-color: @red;
+            border-color: @red;
+            color: #FFFFFF;
+        }
+
+        &:hover {
+            background-color: darken(@red, 10%);
+            border-color: darken(@red, 10%);
+            color: #FFFFFF;
+        }
+
+        &:hover:not(&--red) {
+            background-color: @black;
+            border-color: @black;
+            color: #FFFFFF;
+        }
+    }
 }

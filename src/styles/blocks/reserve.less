@@ -2,27 +2,149 @@
     display: grid;
     grid-template-columns: 405px 1fr;
     gap: 65px 11%;
-    grid-template-areas: 
-    "checks scheme"
-    "order legend";
+    grid-template-areas:
+        "checks scheme"
+        "order legend";
     width: 100%;
+
     &__checks {
-    grid-area: checks;
-    background-color:yellow;
-}
+        grid-area: checks;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
 
-&__scheme {
-    grid-area: scheme;
-    background-color: rgb(255, 162, 0);
-}
+    &__section-title {
+        font-weight: 700;
+        font-size: 18px;
+        margin: 0 0 15px;
+    }
 
-&__order {
-    grid-area: order;
-    background-color: rgb(76, 0, 255);
-}
+    &__check {
+        // Стили для чекбоксов в резерве
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
 
-&__legend {
-    grid-area: legend;
-    background-color: rgb(255, 0, 81);
-}
+        // Если чекбокс отключён
+        &.check--disabled {
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        // Красный чекбокс (выбранный стол)
+        &.check--red {
+            .check__mark {
+                border-color: @red;
+            }
+
+            .check__input:checked ~ .check__mark {
+                background-color: @red;
+            }
+        }
+    }
+
+    &__scheme {
+        grid-area: scheme;
+    }
+
+    &__scheme-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__scheme-title {
+        font-weight: 600;
+        font-size: 16px;
+        margin: 0 0 15px;
+        text-align: center;
+    }
+
+    &__scheme-wrapper {
+        position: relative;
+        width: 100%;
+
+        &::after {
+            content: "";
+            display: block;
+            width: 100%;
+            padding-top: 51.15384%; /* 399 / 780 * 100 */
+        }
+    }
+
+    &__scene {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__order {
+        grid-area: order;
+    }
+
+    &__tickets-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    &__tickets {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        padding: 10px 0;
+        border-bottom: 1px solid #bfbfbf;
+    }
+
+    &__qty {
+        font-weight: 600;
+        font-size: 16px;
+
+        &::after {
+            content: " " attr(data-caption) " | " attr(data-price);
+            font-weight: 400;
+            color: #666;
+        }
+    }
+
+    &__sum {
+        font-weight: 600;
+        font-size: 16px;
+
+        &::after {
+            content: attr(data-currency);
+            margin-left: 4px;
+            font-size: 0.95em;
+        }
+    }
+
+    &__total {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        padding: 15px 0;
+        font-weight: 700;
+        font-size: 20px;
+        border-top: 2px solid #1f1e1e;
+        margin-bottom: 20px;
+
+        &::before {
+            content: attr(data-caption);
+        }
+
+        &::after {
+            content: attr(data-currency);
+            margin-left: 4px;
+            font-size: 0.95em;
+        }
+    }
+
+    &__submit {
+        width: 100%;
+        text-align: center;
+    }
 }
