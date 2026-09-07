@@ -45,7 +45,7 @@ const resources = {
 // Gulp Tasks:
 
 function clean(done) {
-    deleteSync(["dist"]);
+    deleteSync(["docs"]);
     done();
 }
 
@@ -60,7 +60,7 @@ function includeHtml() {
             })
         )
         .pipe(formatHtml())
-        .pipe(gulp.dest("dist"));
+        .pipe(gulp.dest("docs"));
 }
 
 function style() {
@@ -76,10 +76,10 @@ function style() {
                 }),
             ])
         )
-        .pipe(gulp.dest("dist/styles"))
+        .pipe(gulp.dest("docs/styles"))
         .pipe(minify())
         .pipe(rename("styles.min.css"))
-        .pipe(gulp.dest("dist/styles"));
+        .pipe(gulp.dest("docs/styles"));
 }
 
 function js() {
@@ -92,21 +92,21 @@ function js() {
                 basepath: "@file",
             })
         )
-        .pipe(gulp.dest("dist/scripts"))
+        .pipe(gulp.dest("docs/scripts"))
         .pipe(terser())
         .pipe(
             rename(function(path) {
                 path.basename += ".min";
             })
         )
-        .pipe(gulp.dest("dist/scripts"));
+        .pipe(gulp.dest("docs/scripts"));
 }
 
 function jsCopy() {
     return gulp
         .src(resources.jsVendor)
         .pipe(plumber())
-        .pipe(gulp.dest("dist/scripts"));
+        .pipe(gulp.dest("docs/scripts"));
 }
 
 function copy() {
@@ -115,7 +115,7 @@ function copy() {
             base: "src",
             encoding: false,
         })
-        .pipe(gulp.dest("dist/"));
+        .pipe(gulp.dest("docs/"));
 }
 
 function images() {
@@ -128,7 +128,7 @@ function images() {
                 imagemin_optipng({ optimizationLevel: 3 }),
             ])
         )
-        .pipe(gulp.dest("dist/assets/images"));
+        .pipe(gulp.dest("docs/assets/images"));
 }
 
 function svgSprite() {
@@ -147,7 +147,7 @@ function svgSprite() {
             })
         )
         .pipe(rename("symbols.svg"))
-        .pipe(gulp.dest("dist/assets/icons"));
+        .pipe(gulp.dest("docs/assets/icons"));
 }
 
 const build = gulp.series(
@@ -169,7 +169,7 @@ function reloadServer(done) {
 function serve(done) {
     server.init(
         {
-            server: "dist",
+            server: "docs",
             port: 3001,
             open: true,
         },
