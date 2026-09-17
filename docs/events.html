@@ -2,31 +2,67 @@
 <html lang="ru">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Lenni</title>
+  <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lenni Art</title>
+  <link rel="stylesheet" href="styles/styles.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@400,500;1,400..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles/styles.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Open+Sans:wght@400;500;600;700&family=Roboto&display=swap">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/images/favicons/site.webmanifest">
+  <link rel="mask-icon" href="/assets/images/favicons/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+
+  <meta name="apple-mobile-web-app-title" content="Lenni Art">
+  <meta name="application-name" content="Lenni Art">
+  <meta name="theme-color" content="#dedede">
+
+  <meta name="description" content="Арт—пространство для людей, горящих сердец и делом">
+  <meta name="keywords" content="Lenni Art, пространство, мероприятия">
+  <meta property="og:title" content="Lenni Art" />
+  <meta property="og:description" content="Арт пространство для людей, горящих сердцем и делом" />
+  <meta property="og:image" content="/assets/images/lenni-art.jpg">
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://lenni-art.ru/" />
 </head>
 
 <body>
   <header class="page-header">
     <div class="page-header__container">
-      <a class="page-header__logo" href="#">
-        <svg class="page-header__logo-icon" width="202" height="147">
+      <a href="index.html" class="page-header__logo">
+        <svg class="page-header__logo-icon">
           <use xlink:href="assets/icons/symbols.svg#logo"></use>
         </svg>
       </a>
       <nav class="page-header__nav">
-        <a class="page-header__nav-link" href="#">Мероприятия</a>
-        <a class="page-header__nav-link" href="#">Блог</a>
-        <a class="page-header__nav-link" href="#">О нас</a>
-        <a class="page-header__nav-link" href="#">Контакты</a>
+        <a href="events.html" class="page-header__nav-link">Мероприятия</a>
+        <a href="#" class="page-header__nav-link">Блог</a>
+        <a href="#" class="page-header__nav-link">О нас</a>
+        <a href="#" class="page-header__nav-link">Контакты</a>
+
+        <div class="page-header__nav-user">
+          <a href="#" class="page-header__nav-user-link">Александр С.</a>
+          <a href="#" class="page-header__nav-logout">
+            <svg class="page-header__nav-logout-icon" width="24" height="24">
+              <use xlink:href="assets/icons/symbols.svg#door"></use>
+            </svg>
+          </a>
+        </div>
       </nav>
-      <div class="page-header__right-block">
-        <a class="page-header__button btn" href="#">Войти</a>
+      <div class="page-header__btn">
+        <a href="#" class="btn page-header__user-btn">
+          Войти
+          <svg class="page-header__user-icon" width="21" height="18">
+            <use xlink:href="assets/icons/symbols.svg#user"></use>
+          </svg>
+        </a>
+        <button type="button" class="page-header__nav-toggle" id="js-navToggle"></button>
       </div>
+    </div>
   </header>
   <main class="main">
     <div class="events">
@@ -36,7 +72,7 @@
           <article class="event-card listing__event-card">
             <a href="#" class="event-card__link">
               <div class="event-card__picture">
-                <img src="assets/images/events/nirvana.svg" class="event-card__img" alt="nirvana" />
+                <img src="assets/images/events/Nirvana.svg" class="event-card__img" alt="nirvana" />
               </div>
               <h4 class="event-card__title">Собираемся и слушаем альбом Nirvana</h4>
               <p class="event-card__description">Это третий альбом группы, выпущенный после смерти Кобейна и первый, содержащий студийный материал.</p>
@@ -102,44 +138,113 @@
         </div>
       </section>
       <table class="table">
-        <thead class="table__head">
-          <tr class="table__head-tr">
-            <th class="table__th"></th>
-            <th class="table__th">Тариф «Light»</th>
-            <th class="table__th">Тариф «Promo»</th>
-            <th class="table__th">Тариф «All stars»</th>
-          </tr>
-        </thead>
-        <tbody class="table__body">
-          <tr class="table__tr">
-            <th class="table__body-th">Стоимость за час</th>
-            <td class="table__td">1 000 ₽</td>
-            <td class="table__td">3 000 ₽</td>
-            <td class="table__td">от 6 000 ₽</td>
-          </tr>
-          <tr class="table__tr">
-            <th class="table__body-th">Ведущий мероприятия</th>
-            <td class="table__td"></td>
-            <td class="table__td">
-              <span class="table__ok">
+        <h2 class="section-title">Дополнительные услуги</h2>
+        <p class="additional-services__text">Перед запуском проекта, мы подготавливаем подробную смету и согласуем ее с клиентом. Убедившись, что все пожеланию учтены и мы можем приступать к реализациии проекта, начинается сложная, но интересная работа, результатом которой будет проведение вашего мероприятия на высшем уровне.</p>
 
-              </span>
-            </td>
-            <td class="table__td">
-              <span class="table__ok">
+        <table class="events__tariffs-table  table">
+          <thead class="table__head">
+            <tr class="table__head-tr">
+              <th class="table__th table__th-first"></th>
+              <th class="table__th">Тариф «Light»</th>
+              <th class="table__th">Тариф «Promo»</th>
+              <th class="table__th">Тариф «All stars»</th>
+            </tr>
+          </thead>
 
-              </span>
-            </td>
-          </tr>
-        </tbody>
-        <tfoot class="table__footer">
-          <tr class="table__footer-tr">
-            <th class="table__footer-th">Тариф «Light»</th>
-            <th class="table__footer-th">Тариф «Promo»</th>
-            <th class="table__footer-th">Тариф «All stars»</th>
-          </tr>
-        </tfoot>
-      </table>
+          <tbody class="table__body">
+            <tr class="table__tr">
+              <th class="table__body-th">Стоимость за час</th>
+              <td class="table__td">1 000 ₽</td>
+              <td class="table__td">3 000 ₽</td>
+              <td class="table__td">3 000 ₽</td>
+            </tr>
+            <tr class="table__tr">
+              <th class="table__body-th">Ведущий мероприятия</th>
+              <td class="table__td"></td>
+              <td class="table__td">
+                <span class="ok"></span>
+              </td>
+              <td class="table__td">
+                <span class="ok"></span>
+              </td>
+            </tr>
+            <tr class="table__tr">
+              <th class="table__body-th">Фотосъемка</th>
+              <td class="table__td">
+                <span class="ok"></span>
+              </td>
+              <td class="table__td">
+                <span class="ok"></span>
+              </td>
+              <td class="table__td">
+                <span class="ok"></span>
+              </td>
+            </tr>
+            <tr class="table__tr">
+              <th class="table__body-th">Видеосъемка</th>
+              <td class="table__td"></td>
+              <td class="table__td"></td>
+              <td class="table__td">
+                <span class="ok"></span>
+              </td>
+            </tr>
+            <tr class="table__tr">
+              <th class="table__body-th">Организация питания</th>
+              <td class="table__td"></td>
+              <td class="table__td">
+                <span class="ok"></span>
+              </td>
+              <td class="table__td">
+                <span class="ok"></span>
+              </td>
+            </tr>
+            <tr class="table__tr">
+              <th class="table__body-th">Декор</th>
+              <td class="table__td"></td>
+              <td class="table__td"></td>
+              <td class="table__td">
+                <span class="ok"></span>
+              </td>
+            </tr>
+            <tr class="table__tr">
+              <th class="table__body-th">Звуковое сопровождение</th>
+              <td class="table__td"></td>
+              <td class="table__td">
+                <span class="ok"></span>
+              </td>
+              <td class="table__td">
+                <span class="ok"></span>
+              </td>
+            </tr>
+            <tr class="table__tr">
+              <th class="table__body-th">Дополнительное освещение</th>
+              <td class="table__td"></td>
+              <td class="table__td"></td>
+              <td class="table__td">
+                <span class="ok"></span>
+              </td>
+            </tr>
+
+            <tr class="table__tr">
+              <th class="table__body-th">Клининг</th>
+              <td class="table__td"></td>
+              <td class="table__td"></td>
+              <td class="table__td">
+                <span class="ok"></span>
+              </td>
+            </tr>
+          </tbody>
+
+          <tfoot class="table__footer">
+            <tr class="table__footer-tr">
+              <th class="table__footer-th"></th>
+              <th class="table__footer-th">Тариф «Light»</th>
+              <th class="table__footer-th">Тариф «Promo»</th>
+              <th class="table__footer-th">Тариф «All stars»</th>
+            </tr>
+          </tfoot>
+        </table>
+        </section>
     </div>
   </main>
 </body>

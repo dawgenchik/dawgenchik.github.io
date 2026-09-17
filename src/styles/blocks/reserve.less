@@ -6,6 +6,23 @@
         "checks scheme"
         "order legend";
     width: 100%;
+    @media @bw1340 {
+    gap: 65px 6.5%;
+    grid-template-columns: 340px calc(93.5% - 340px);
+    }
+    @media @bw1020 {
+    gap: 60px;
+    grid-template-columns: auto 390px;
+    grid-template-areas: "scheme scheme" "checks legend" "checks order"; 
+    }
+    @media @bw768 {
+    grid-template-columns: 100%;
+    grid-template-areas: 
+    "scheme" 
+    "legend" 
+    "checks" 
+    "order"; 
+    }
 
     &__checks {
         grid-area: checks;
@@ -21,19 +38,16 @@
     }
 
     &__check {
-        // Стили для чекбоксов в резерве
         display: flex;
         align-items: center;
         gap: 10px;
         cursor: pointer;
 
-        // Если чекбокс отключён
         &.check--disabled {
             pointer-events: none;
             opacity: 0.5;
         }
 
-        // Красный чекбокс (выбранный стол)
         &.check--red {
             .check__mark {
                 border-color: @red;
@@ -69,7 +83,7 @@
             content: "";
             display: block;
             width: 100%;
-            padding-top: 51.15384%; /* 399 / 780 * 100 */
+            padding-top: 51.15384%;
         }
     }
 
