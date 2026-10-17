@@ -36,7 +36,7 @@ const resources = {
 };
 // Gulp Tasks:
 function clean() {
-  return del("dist");
+  return del("docs");
 }
 function includeHtml() {
   return gulp
@@ -49,7 +49,7 @@ function includeHtml() {
       })
     )
     .pipe(formatHtml())
-    .pipe(gulp.dest("dist"));
+    .pipe(gulp.dest("docs"));
 }
 function style() {
   return gulp
@@ -64,10 +64,10 @@ function style() {
         })
       ])
     )
-    .pipe(gulp.dest("dist/styles"))
+    .pipe(gulp.dest("docs/styles"))
     .pipe(minify())
     .pipe(rename("styles.min.css"))
-    .pipe(gulp.dest("dist/styles"));
+    .pipe(gulp.dest("docs/styles"));
 }
 function js() {
   return gulp
@@ -79,27 +79,27 @@ function js() {
         basepath: "@file"
       })
     )
-    .pipe(gulp.dest("dist/scripts"))
+    .pipe(gulp.dest("docs/scripts"))
     .pipe(terser())
     .pipe(
       rename(function (path) {
         path.basename += ".min";
       })
     )
-    .pipe(gulp.dest("dist/scripts"));
+    .pipe(gulp.dest("docs/scripts"));
 }
 function jsCopy() {
   return gulp
     .src(resources.jsVendor)
     .pipe(plumber())
-    .pipe(gulp.dest("dist/scripts"));
+    .pipe(gulp.dest("docs/scripts"));
 }
 function copy() {
   return gulp
     .src(resources.static, {
       base: "src"
     })
-    .pipe(gulp.dest("dist/"));
+    .pipe(gulp.dest("docs/"));
 }
 function images() {
   return gulp
@@ -111,7 +111,7 @@ function images() {
         imagemin_optipng({ optimizationLevel: 3 })
       ])
     )
-  .pipe(gulp.dest("dist/assets/images"));
+  .pipe(gulp.dest("docs/assets/images"));
 }
 function svgSprite() {
   return gulp
@@ -129,7 +129,7 @@ function svgSprite() {
       })
     )
     .pipe(rename("symbols.svg"))
-    .pipe(gulp.dest("dist/assets/icons"));
+    .pipe(gulp.dest("docs/assets/icons"));
 }
 const build = gulp.series(
   clean,
@@ -147,7 +147,7 @@ function reloadServer(done) {
 }
 function serve() {
   server.init({
-    server: "dist"
+    server: "docs"
   });
   gulp.watch(resources.html, gulp.series(includeHtml, reloadServer));
   gulp.watch(resources.less, gulp.series(style, reloadServer));
